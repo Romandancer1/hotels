@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-csso');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -43,17 +42,6 @@ module.exports = function(grunt) {
       }
     },
 
-    csso: {
-      style: {
-        options: {
-          report: "gzip"
-        },
-        files: {
-          "build/css/style.min.css": ["build/css/style.css"]
-        }
-      }
-    },
-
     watch: {
       html: {
         files: ["*.html"],
@@ -61,7 +49,7 @@ module.exports = function(grunt) {
       },
       style: {
         files: ["less/**/*.less"],
-        tasks: ["less", "postcss", "csso"]
+        tasks: ["less", "postcss"]
       }
     },
 
@@ -111,7 +99,6 @@ module.exports = function(grunt) {
     "clean",
     "copy",
     "less",
-    "csso",
     "imagemin"
   ]);
 }
